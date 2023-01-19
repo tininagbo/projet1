@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="text-center">Apprendre Flask !</h2>
+{% if taches %}
+<div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tache</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for tache in taches %}
+        <tr>
+            <th>
+                <a href="/update/{{tache.id}}/">{{ tache.name }}</a>
+            </th>
+            <th>{{ tache.created_at.date() }}</th>
+            <th>
+                <a href="/delete/{{tache.id}}/" class="btn btn-danger">Supprimer</a>
+            </th>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Nothing to list </p>
+{% endif %}
+{% include "partiels/_form.html" %}
+</div>
+{% endblock content %}
