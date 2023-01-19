@@ -38,6 +38,8 @@ def index():
         taches = Tache.query.order_by(Tache.created_at)
     return render_template("index.html", taches = taches)
 
+# suppression des taches
+
 @app.route("/delete/<int:id>/")
 def delete(id):
     tache = Tache.query.get_or_404(id)
